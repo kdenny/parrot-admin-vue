@@ -3,7 +3,8 @@
     <h1>Floorplan detail - {{ floorplan.name}} in property {{ property.name }}</h1>
     <div v-if="roomList">
       <h2>Rooms</h2>
-      <button class="btn-primary">Add new</button>
+      <button class="btn-primary" v-on:click="newRoom=true">Add new</button>
+      <room_form v-if="newRoom"></room_form>
       <div v-for="r in roomList" style="border: 1px solid black">
         <div class="room-name">
           <h4>{{ r.name }}</h4>
@@ -13,11 +14,9 @@
           <div v-for="item in r.room_items">
             {{ item.name }}
           </div>
-          <button class="btn-primary">Add new</button>
+          <button class="btn-primary" v-on:click="newItem=true">Add new</button>
+          <item_form v-if="newItem"></item_form>
         </div>
-        <!--<div class="property-info">-->
-          <!--{{ r }}-->
-        <!--</div>-->
       </div>
     </div>
 
@@ -25,25 +24,23 @@
 </template>
 
 <script>
-
+import RoomForm from './NewRoom.vue'
+import ItemForm from './NewRoomItem.vue'
 export default {
   name: 'PropertyList',
-//  components: {
-//    TreeMap,
-//    bar_chart: BarChart,
-//    bootstrap_table: BootstrapTable
-//  },
+  components: {
+    room_form: RoomForm,
+    item_form: ItemForm
+  },
   computed: {
-//    barData() {
-//      console.log(this.$store.getters)
-//      return this.$store.getters.treeData
-//    }
   },
   data () {
     return {
       floorplan: null,
       property: null,
-      roomList: null
+      roomList: null,
+      newRoom: false,
+      newItem: false
     }
   },
   mounted () {

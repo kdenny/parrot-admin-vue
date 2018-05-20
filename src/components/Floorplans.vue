@@ -10,31 +10,27 @@
           {{ f }}
         </div>
       </div>
-      <button class="btn-primary">Add new</button>
+      <button class="btn-primary" style="margin-top: 50px" v-on:click="newFloorplan=true" v-if="!newFloorplan">Add new</button>
+      <floorplan_form v-if="newFloorplan"></floorplan_form>
     </div>
 
   </div>
 </template>
 
 <script>
-
+import FloorplanForm from './NewFloorplan.vue'
 export default {
   name: 'PropertyList',
-//  components: {
-//    TreeMap,
-//    bar_chart: BarChart,
-//    bootstrap_table: BootstrapTable
-//  },
+  components: {
+    floorplan_form: FloorplanForm
+  },
   computed: {
-//    barData() {
-//      console.log(this.$store.getters)
-//      return this.$store.getters.treeData
-//    }
   },
   data () {
     return {
       floorplanList: null,
-      property: null
+      property: null,
+      newFloorplan: false
     }
   },
   mounted () {

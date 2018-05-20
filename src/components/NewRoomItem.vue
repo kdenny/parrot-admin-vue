@@ -1,33 +1,34 @@
 <template>
-  <div class="hello">
-    <h3>Properties</h3>
-    <div v-if="propertyList">
-      <div v-for="p in propertyList" class="property-card card" v-on:click="viewPropertyFloorplans(p.id)">
-        <div class="property-name">
-          {{ p.name }} - {{ p.floorplans.length }} floorplans
-        </div>
-        <div class="property-info">
-          {{ p.address }}
-        </div>
+  <div class="property-form">
+    <h3>New room item</h3>
+    <form>
+      <div class="form-group">
+        <label for="itemName">Item name</label>
+        <input type="text" class="form-control" id="itemName" placeholder="Enter name of item to add to room">
       </div>
-    </div>
-    <button class="btn-primary" style="margin-top: 50px" v-on:click="newProp=true" v-if="!newProp">Add new</button>
-    <property_form v-if="newProp"></property_form>
+
+      <button class="btn-primary" style="margin-top: 10px" >Submit</button>
+    </form>
   </div>
 </template>
 
 <script>
-import PropertyForm from './NewProperty.vue'
+
 export default {
-  name: 'PropertyList',
-  components: {
-    property_form: PropertyForm
-  },
+  name: 'NewRoomItem',
+//  components: {
+//    TreeMap,
+//    bar_chart: BarChart,
+//    bootstrap_table: BootstrapTable
+//  },
   computed: {
+//    barData() {
+//      console.log(this.$store.getters)
+//      return this.$store.getters.treeData
+//    }
   },
   data () {
     return {
-      newProp: false,
       propertyList: null
     }
   },
@@ -58,6 +59,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.property-form {
+  width: 40%;
+  position: relative;
+  left: 30%;
+}
 h1, h2 {
   font-weight: normal;
 }
