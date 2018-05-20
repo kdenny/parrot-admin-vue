@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Home from '@/components/Home'
 import Properties from '@/components/Properties'
 import Floorplans from '@/components/Floorplans'
 import FloorplanDetail from '@/components/FloorplanDetail'
@@ -10,8 +11,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Properties',
-      component: Properties
+      name: 'Home',
+      component: Home
     },
     {
       path: '/property/:propertyId',
